@@ -41,6 +41,14 @@ int main(){
   }
   shmdt(data);
   
-
+  printf("Do you want to delete this shared memory segment? (y/n):\n");
+  fgets(line, 100, stdin);
+    if (line[0] == 'y'){
+      shmctl(shmid, IPC_RMID, NULL);
+      printf("The shared memory segment has been deleted!\n");
+  }
+  else if(*line == 'n'){
+    printf("Understood! We will keep this shared memory segment.\n");
+  }
   return 0;
 }
